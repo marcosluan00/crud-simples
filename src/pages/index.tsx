@@ -1,11 +1,8 @@
 import Botao from "../components/Botao";
 import Layout from "../components/Layout";
 import Tabela from "../components/Tabela";
-import Cliente from "../core/Cliente";
 import Formulario from "../components/Formulario";
-import { useState, useEffect} from 'react'
-import ClienteRepositorio from "../core/ClienteRepositorio";
-import ColecaoCliente from "../backend/db/ColecaoCliente";
+
 import useClientes from "../hooks/useClientes";
 
 export default function Home() {

@@ -5,13 +5,16 @@ import ClienteRepositorio from "../core/ClienteRepositorio"
 import useTabela from "./useTabela"
 
 export default function useClientes() {
-  
-  const { tabelaVisivel, formularioVisivel, exibirFormulario,exibirTabela } = useTabela()  
+    const repo: ClienteRepositorio = new ColecaoCliente()
+
+  const { tabelaVisivel, exibirFormulario,exibirTabela } = useTabela()  
+
   const [cliente, setCliente] = useState<Cliente>(Cliente.vazio)
   const [clientes, setClientes] = useState<Cliente[]>([])
 
-  const repo: ClienteRepositorio = new ColecaoCliente()
+ 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(obterTodos, [])
 
    function obterTodos() {
@@ -26,12 +29,12 @@ export default function useClientes() {
   }
   async function excluirCliente(cliente:Cliente){
     await repo.excluir(cliente)
-    obterTodos
+    obterTodos()
     
   }
   async function salvarCliente(cliente:Cliente){
     await repo.salvar(cliente)
-    obterTodos
+    obterTodos()
     
   }
   function novoCliente(){
